@@ -54,15 +54,35 @@
         </div>
       </div>
     </div>
-    <div class="row text-center mapa">
-      <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/89391/maps/channel_show"></iframe>
-    </div>
-    <div class="row text-center light-chart">
-      <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/89391/charts/2?dynamic=true&results=20&title=Cantidad+de+luz&type=line&xaxis=Hora&yaxis=Luz"></iframe>
-    </div>
-    <div class="row text-center google-gauge">
-      <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/89391/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+    <div class="row text-center" id="map">
+      <div id="map" class=""></div>
+          <script>
+            function initMap() {
+              var uluru = {lat: -33.448947, lng: -70.642762};
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: uluru
+              });
+              var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+              });
+            }
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVDMF8LBgtEGmS5rCTlth_6y1kfZmxsE8&callback=initMap">
+          </script>
       
+    </div>
+    <div class="row">
+      <div class="column medium-12 large-6 text-center">
+        <iframe class="charts" src="https://thingspeak.com/channels/89391/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+        
+      </div>
+      <div class="column medium-12 large-6 text-center">
+        <iframe class="charts" src="https://thingspeak.com/channels/89391/charts/2?dynamic=true&results=20&title=Cantidad+de+luz&type=line&xaxis=Hora&yaxis=Luz"></iframe>
+        
+      </div>
     </div>
     
     <footer class="responsive-blog-footer">
